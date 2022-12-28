@@ -1,32 +1,25 @@
-For a sequence a1, a2, ..., an, find the length of the longest increasing subsequence ai1, ai2, ..., aik.
+When solving the 2022 Advent Of Code, I really got into algorithmic problems and decided to learn some more techniques like dynamic programming. The first example I found was a LIS problem. Here is a short “how to” solve it with some key points for later reference.
 
-Constraints: i1 < i2 < ... < ik; ai1 < ai2 < ... < aik
+The longest increasing subsequence (LIS) problem is a well-known problem in computer science that involves finding the length of the longest subsequence of a given sequence such that all the elements in the subsequence are in increasing order. For example, for the sequence [3, 1, 8, 2, 5], the longest increasing subsequence is [1, 2, 5], which has a length of 3.
 
-```
-LIS([3, 1, 8, 2, 5]) -> 3
-// [1,2,5]
-```
+Dynamic programming is a technique for solving problems by breaking them down into smaller subproblems and storing the solutions to them to avoid recomputing them.
 
-1. Visualize problem
+To solve the LIS problem using dynamic programming, we can follow these steps:
 
-- a graph?
+1. **Find the subproblems:**
 
-2. Find subproblem:
+   To solve the LIS problem, we can define subproblems as finding the LIS to a certain index x in the sequence.
 
-Find LIS to x index. I.e.
+   I.e. subproblems for LIS from `[3,1,8,2,5]` will be:
 
-```
-LIS[3]([3,1,8,2,5]) = [1,2] || [3,8] -> 2
-```
+   - LIS([3,1,8])
+   - LIS([3,1,8,2])
+   - LIS( [3,1])
+   - …
 
-3. Find relationships among subproblems:
+2. **Find the relationships among the subproblems:**
 
-```
-LIS[n] = 1 + max{LIS[k] | k <n, A[k] < A[n]>}
-```
+   To solve a subproblem LIS[n], we can consider all the subproblems LIS[k] for which k < n and the value at index k is smaller than the value at index n. The value of LIS[n] can then be calculated as 1 + the maximum value of LIS[k] over all such subproblems.
 
-4. Generalize the relationship
-
-```
-LIS[n] = 1 + max{LIS[k] | k <n, A[k] < A[n]>}
-```
+3. Generalize the relationship: Once we have found the relationships among the subproblems, we can use these relationships to calculate the value of LIS[n] for all n.
+4. The last step would be to find the index (n) of the biggest value. This way we can find where does the LIS ends.
