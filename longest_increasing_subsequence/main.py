@@ -8,7 +8,7 @@ def lis(seq):
     """
     L = []
     for i in range(len(seq)):
-        L.append(dict(val=0, prev_index=None, index=i))
+        L.append(dict(val=1, prev_index=None, index=i))
 
     for i in range(1, len(L)):
         # for every element define and calculate a set of subproblems
@@ -33,14 +33,28 @@ def lis(seq):
     # from seq[last_element['index']]
     result = []
     while last_element.get('prev_index') is not None:
-        result.append(seq[last_element['index']])
+        result.insert(0,seq[last_element['index']])
         last_element = L[last_element.get('prev_index')]
-    result.append(seq[last_element['index']])
+    result.insert(0, seq[last_element['index']])
             
     return result
 
-if __name__ == "__main__":
-    sequence = [5,2,8,6,3,6,9,5]
 
-    assert(len(lis(sequence)) == 4)
-    assert(lis(sequence) == [9,6,3,2])
+def test_lis():
+    # Test case 1
+    assert lis([9, 3, 6, 2, 5, 1, 8, 10, 4, 7]) == [3, 6, 8, 10]
+    
+    # Test case 2
+    assert lis([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]) == [10]
+    
+    # Test case 3
+    assert lis([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    
+    # Test case 4
+    assert lis([10, 9, 2, 3, 4, 5, 6, 7, 8, 1]) == [2, 3, 4, 5, 6, 7, 8]
+    
+    # Test case 5
+    assert lis([1, 3, 5, 7, 9, 2, 4, 6, 8, 10]) == [1, 3, 5, 7, 9, 10]
+
+if __name__ == "__main__":
+    test_lis()
