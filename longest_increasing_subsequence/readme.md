@@ -14,12 +14,13 @@ To solve the LIS problem using dynamic programming, we can follow these steps:
 
    - LIS([3,1,8])
    - LIS([3,1,8,2])
-   - LIS( [3,1])
+   - LIS([3,1])
    - …
 
 2. **Find the relationships among the subproblems:**
 
    To solve a subproblem LIS[n], we can consider all the subproblems LIS[k] for which k < n and the value at index k is smaller than the value at index n. The value of LIS[n] can then be calculated as 1 + the maximum value of LIS[k] over all such subproblems.
 
-3. Generalize the relationship: Once we have found the relationships among the subproblems, we can use these relationships to calculate the value of LIS[n] for all n.
-4. The last step would be to find the index (n) of the biggest value. This way we can find where does the LIS ends.
+3. **Generalize the relationship:** Once we have found the relationships among the subproblems, we can use these relationships to calculate the value of LIS[n] for all n.
+
+The last step would be to find the index (n) of the biggest value. This way we can find where does the LIS ends.
