@@ -1,0 +1,44 @@
+////////////////////////////////////
+
+
+SQUARE 
+size 2x2
+
+ # #
+ # #
+
+L figure 
+size 2x4
+
+ #
+ # # # # 
+
+L figure invert
+size 2x4
+
+       #
+ # # # #
+ 
+LINE
+size 1x5
+
+ # # # # # 
+
+POINT 
+size 1x1
+
+ # 
+
+FIG5
+size 2x3
+
+   #
+ # # #
+
+FIG6
+size 2x3
+
+   # #
+ # #
+ 
+
